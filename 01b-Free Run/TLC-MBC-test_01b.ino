@@ -34,6 +34,7 @@
  *  A0 : Mode switch - can be a toggle SPST switch or a fly lead that can be
  *       connected to either +5v or GND.
  *  A1 : Single Step - A momentary push button
+ *  A2 : Varies length of Clock pulse from 1 to 1024 milliseconds.
  *  A4 : SDA
  *  A5 : SCL
  *  PD3: Used to produce clock pulse for the 6502
@@ -202,8 +203,8 @@ void readAddressBus(){
 
 //=== Read and print the data bus ================
 void readDataBus(){
-  int dataBus = getDataBus();
-  printHexByte(dataBus);
+  int dataValue = getDataBus();
+  printHexByte(dataValue);
 }
 
 
@@ -211,13 +212,14 @@ void readDataBus(){
 
 void loop (){
   mode = digitalRead(MODE_pin);                   // Freerun or SingleStep?
-  PULSE = analogRead(RANGE_pin);                  // Get val for clock pulse width
+  PULSE = analogRead(RANGE_pin) + 1;              // Get val for clock pulse width
   
   if(mode == FREERUN){
     pulseClock();                                 // Just pulse the clock in Free Run mode 
     readAddressBus();                             // and show the current address
-    Serial.println(": ");
+    Serial.print(": ");
     readDataBus();                                // then show what's on the Data Bus
+    Serial.println(" ");
   }
   
   else {                                          // We're in Single Step mode
@@ -225,8 +227,9 @@ void loop (){
     if(lastButton == LOW && currButton == HIGH){  // Button has just been pressed!
       pulseClock();                               // So pulse the clock
       readAddressBus();                           // and show the current address
-      Serial.println(": ");
+      Serial.print(": ");
       readDataBus();                              // then show what's on the Data Bus
+      Serial.println(" ");
     }
     lastButton = currButton;
   }
