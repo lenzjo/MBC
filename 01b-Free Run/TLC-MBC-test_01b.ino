@@ -47,7 +47,7 @@
  *     
  ***********************************************************************/
 
-#include <Wire.h>
+#include "Wire.h"
 
 //MCP23017 Addresses
 const int addrLines = 0b00100000;   // @ addr $20

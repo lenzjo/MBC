@@ -6,7 +6,7 @@
  * Port B is connected to A0-A7
  */
 
-#include <Wire.h>
+#include "Wire.h"
 #include "Adafruit_MCP23017.h"
 
 Adafruit_MCP23017 addrbus;  // Instantiate the 23017 object
