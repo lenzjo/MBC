@@ -1,0 +1,4 @@
+
+SERIAL		= 0
+SCREEN		= 1
+BOTH			= 99

@@ -1,0 +1,8 @@
+CZPR				= $70
+THISCMD			= CZPR
+ARGCNT			= CZPR+1
+ARG1				= CZPR+2
+ARG2				= CZPR+3
+ARG3				= CZPR+4
+ARG4				= CZPR+5
+ARG5				= CZPR+6

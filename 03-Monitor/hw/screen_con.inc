@@ -1,0 +1,6 @@
+ACK_BIT		= %00000010			; These are used by Screen Functions
+AVAIL_BIT	= %00000001
+AVAIL_MASK	= %11111110
+
+FORTYCOL		= 40
+EIGHTYCOL	= 80
